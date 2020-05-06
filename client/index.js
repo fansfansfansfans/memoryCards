@@ -23,5 +23,3 @@ render(
 
   document.getElementById('contents')
 );
-
-
