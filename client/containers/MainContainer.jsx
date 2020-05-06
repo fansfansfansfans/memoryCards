@@ -46,6 +46,7 @@ class MainContainer extends Component {
           // eslint-disable-next-line react/destructuring-assignment
           showAnswer={this.props.showAnswer}
           cardKey={uniqueKey}
+          divStyle={card.divStyle}
         />
       );
 
@@ -54,8 +55,8 @@ class MainContainer extends Component {
 
     return (
       <div>
-        <h1> Memory Cards </h1>
-        {displayCards}
+        <h1> Codesmith Memory Game </h1>
+        <div id="cards-container">{displayCards}</div>
       </div>
     );
   }

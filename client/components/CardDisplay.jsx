@@ -6,6 +6,7 @@ const CardDisplay = ({
   showAnswerFlag,
   showAnswer,
   cardKey,
+  divStyle,
 }) => {
   console.log(
     'question = ',
@@ -19,20 +20,19 @@ const CardDisplay = ({
   );
   // show-answer will flip the card.
   const newClassName = showAnswerFlag ? 'card show-answer' : 'card';
+
   return (
-    <div id="cards-container" className="cards">
-      <div
-        className={newClassName}
-        role="button"
-        onClick={() => showAnswer({ cardKey })}
-      >
-        <div className="inner-card">
-          <div className="inner-card-front">
-            <p> {question}</p>
-          </div>
-          <div className="inner-card-back">
-            <p> {answer}</p>
-          </div>
+    <div
+      className={newClassName}
+      role="button"
+      onClick={() => showAnswer({ cardKey })}
+    >
+      <div className="inner-card">
+        <div className="inner-card-front" style={divStyle}>
+          <p> {question}</p>
+        </div>
+        <div className="inner-card-back">
+          <p> {answer}</p>
         </div>
       </div>
     </div>
