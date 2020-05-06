@@ -61,9 +61,13 @@ h1 {
   background-image: url('./images/Sara.png');
   /* background-color: transparent; */
   background-size: 500px 350px;
+  color: white;
+  font-size: 30px;
+  text-align: center;
 }
 
 .inner-card-back {
+  font-family: 'Gloria Hallelujah', cursive;
   transform: rotateX(180deg);
 }
 
