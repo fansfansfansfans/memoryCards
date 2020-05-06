@@ -16,10 +16,10 @@ import showAnswer from '../actions/actions';
 
 const mapStateToProps = state => {
   // add pertinent state here
-  const { showAnswerFlag } = state.memoryReducer;
+  const { cards } = state.memoryReducer;
   return {
     // provide pertinent state here
-    showAnswerFlag,
+    cards,
   };
 };
 
@@ -27,38 +27,35 @@ function mapDispatchToProps(dispatch) {
   // return object of functions that will be merged to props object
   return {
     // create functions that will dispatch action creators
-    showAnswer: () => dispatch(showAnswer()),
+    showAnswer: cardKey => dispatch(showAnswer(cardKey)),
   };
 }
 
 class MainContainer extends Component {
   render() {
-    const cardsData = [
-      {
-        question: 'What must a variable begin with?',
-        answer: 'A letter, $ or _',
-      },
-      {
-        question: 'What is a variable?',
-        answer: 'Container for a piece of data',
-      },
-      {
-        question: 'Example of Case Sensitive Variable',
-        answer: 'thisIsAVariable',
-      },
-    ];
-    const { showAnswerFlag } = this.props;
+    const { cards } = this.props;
+
+    const displayCards = cards.reduce((acc, card, index) => {
+      const uniqueKey = `card${index}`;
+      acc.push(
+        <CardDisplay
+          key={uniqueKey}
+          question={card.question}
+          answer={card.answer}
+          showAnswerFlag={card.showAnswerFlag}
+          // eslint-disable-next-line react/destructuring-assignment
+          showAnswer={this.props.showAnswer}
+          cardKey={uniqueKey}
+        />
+      );
+
+      return acc;
+    }, []);
 
     return (
       <div>
         <h1> Memory Cards </h1>
-
-        <CardDisplay
-          data={cardsData[0]}
-          showAnswerFlag={showAnswerFlag}
-          // eslint-disable-next-line react/destructuring-assignment
-          showAnswer={this.props.showAnswer}
-        />
+        {displayCards}
       </div>
     );
   }

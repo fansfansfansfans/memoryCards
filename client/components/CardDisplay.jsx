@@ -1,20 +1,37 @@
 import React from 'react';
 
-const CardDisplay = ({ data, showAnswerFlag, showAnswer }) => {
-  console.log('data = ', data);
+const CardDisplay = ({
+  question,
+  answer,
+  showAnswerFlag,
+  showAnswer,
+  cardKey,
+}) => {
+  console.log(
+    'question = ',
+    question,
+    ', answer =',
+    answer,
+    ', showAnswerFlag =',
+    showAnswerFlag,
+    'cardKey =',
+    cardKey
+  );
   // show-answer will flip the card.
-  const setClassName = showAnswerFlag
-    ? 'card active show-answer'
-    : 'card active';
+  const newClassName = showAnswerFlag ? 'card show-answer' : 'card';
   return (
     <div id="cards-container" className="cards">
-      <div className={setClassName} role="button" onClick={() => showAnswer()}>
+      <div
+        className={newClassName}
+        role="button"
+        onClick={() => showAnswer({ cardKey })}
+      >
         <div className="inner-card">
           <div className="inner-card-front">
-            <p> {data.question}</p>
+            <p> {question}</p>
           </div>
           <div className="inner-card-back">
-            <p> {data.answer}</p>
+            <p> {answer}</p>
           </div>
         </div>
       </div>

@@ -12,11 +12,12 @@
 // import actionType constants
 import SHOW_ANSWER from '../constants/actionTypes';
 
-const showAnswer = () => {
+const showAnswer = cardKey => {
   console.log('actionCreator: showAnswer');
 
   return {
     type: SHOW_ANSWER,
+    payload: cardKey,
   };
 };
 

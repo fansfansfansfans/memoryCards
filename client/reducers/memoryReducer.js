@@ -11,22 +11,48 @@
 
 import SHOW_ANSWER from '../constants/actionTypes';
 
+const initCards = [
+  {
+    question: 'What must a variable begin with?',
+    answer: 'A letter, $ or _',
+    showAnswerFlag: false,
+  },
+  {
+    question: 'What is a variable?',
+    answer: 'Container for a piece of data',
+    showAnswerFlag: false,
+  },
+  {
+    question: 'Example of Case Sensitive Variable',
+    answer: 'thisIsAVariable',
+    showAnswerFlag: false,
+  },
+];
+
 const initialState = {
-  showAnswerFlag: true,
+  cards: initCards,
 };
 
 const memoryReducer = (state = initialState, action) => {
   console.log(
-    `memoryReducer: type = ${action.type},  payload = ${action.payload}`
+    `memoryReducer: type = ${action.type},  payload =`,
+    action.payload
   );
   switch (action.type) {
     // cases are the subscribers
     case SHOW_ANSWER: {
       // reassign states location as the user input
-      const showAnswerFlag = !state.showAnswerFlag;
+      const { cardKey } = action.payload;
+      const index = Number.parseInt(cardKey.replace('card', ''), 10);
+      console.log('index =', index);
+      const cards = state.cards.slice();
+      const { showAnswerFlag } = cards[index];
+      console.log('cards =', cards, 'showAnswerFlag =', showAnswerFlag);
+      cards[index].showAnswerFlag = !showAnswerFlag;
+      console.log('cards =', cards, 'showAnswerFlag =', showAnswerFlag);
       return {
         ...state,
-        showAnswerFlag,
+        cards,
       };
     }
 
