@@ -10,38 +10,16 @@
  */
 
 // import actionType constants
-import * as types from '../constants/actionTypes'
+import SHOW_ANSWER from '../constants/actionTypes';
 
-export const addCard = (marketId) => {
+const showAnswer = () => {
+  console.log('actionCreator: showAnswer');
+
   return {
-    type: types.ADD_CARD,
-    payload: marketId
-  }
+    type: SHOW_ANSWER,
+  };
 };
 
-export const addMarket = ()=>{
-  console.log(`actionCreator: addMarket`);
-  //console.log('location query', document.querySelector('location'))
-  return {
-    type: types.ADD_MARKET,
-  }
-}
-
-export const setNewLocation = (event)=>{
-  console.log('actionCreator: setNewLocation', event)
-
-  return{
-    type: types.SET_NEW_LOCATION,
-    payload: event.target.value
-
-  }
-}
-
-export const removeCard = (marketId)=>{
-  return {
-    type: types.REMOVE_CARD,
-    payload: marketId
-  }
-}
-
 // add more action creators
+
+export { showAnswer as default };

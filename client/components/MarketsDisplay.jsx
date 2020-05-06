@@ -10,25 +10,27 @@
  */
 
 import React from 'react';
-import MarketDisplay from './MarketDisplay.jsx';
+import MarketDisplay from './MarketDisplay';
 
-const MarketsDisplay = ({marketList, addCard, removeCard}) => {
+const MarketsDisplay = ({ marketList, addCard, removeCard }) => {
   const display = [];
-  for(let i = 0; i < marketList.length; i++){
-    display.push(<MarketDisplay
-      newLocation={marketList[i].newLocation}  
-      lastMarketId={marketList[i].lastMarketId}
-      displayCards={marketList[i].displayCard}
-      marketList={marketList}
-      addCard={addCard}
-      removeCard={removeCard}
-      key={`display${i}`}
-      />)
+  for (let i = 0; i < marketList.length; i++) {
+    display.push(
+      <MarketDisplay
+        newLocation={marketList[i].newLocation}
+        lastMarketId={marketList[i].lastMarketId}
+        displayCards={marketList[i].displayCard}
+        marketList={marketList}
+        addCard={addCard}
+        removeCard={removeCard}
+        key={`display${i}`}
+      />
+    );
   }
-  return(
+  return (
     <div className="displayBox">
       <h4>Markets Display</h4>
-        {display}
+      {display}
     </div>
   );
 };

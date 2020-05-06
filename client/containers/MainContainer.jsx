@@ -11,19 +11,47 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import CardDisplay from '../components/CardDisplay.jsx';
+import showAnswer from '../actions/actions';
 // import TotalsDisplay from '../components/TotalsDisplay';
 // import MarketsContainer from './MarketsContainer';
 
 // importing connected component from markets container
+// const mapStateToProps = state => {
+//   // add pertinent state here
+//   const { marketList, totalCards } = state.marketsReducer;
+//   return {
+//     // provide pertinent state here
+//     marketList,
+//     totalCards,
+//   };
+// };
+// function mapDispatchToProps(dispatch) {
+//   //return object of functions that will be merged to props object
+//   return {
+//     // create functions that will dispatch action creators
+//     addCard: marketId => dispatch(addCard(marketId)),
+//     removeCard: marketId => dispatch(removeCard(marketId)),
+//     addMarket: () => dispatch(addMarket()),
+//     setNewLocation: event => dispatch(setNewLocation(event)),
+//   };
+// }
 const mapStateToProps = state => {
   // add pertinent state here
-  const { marketList, totalCards } = state.marketsReducer;
+  const { showAnswerFlag } = state.memoryReducer;
   return {
     // provide pertinent state here
-    marketList,
-    totalCards,
+    showAnswerFlag,
   };
 };
+
+function mapDispatchToProps(dispatch) {
+  // return object of functions that will be merged to props object
+  return {
+    // create functions that will dispatch action creators
+    showAnswer: () => dispatch(showAnswer()),
+  };
+}
 
 class MainContainer extends Component {
   render() {
@@ -41,17 +69,7 @@ class MainContainer extends Component {
         answer: 'thisIsAVariable',
       },
     ];
-    cardsData.forEach((data, index) => {
-      <div className="card"></div>;
-      if (index === 0) {
-        return;
-        {
-          <div className="card active"></div>;
-        }
-      } else {
-        <div className="card"></div>;
-      }
-    });
+    const { showAnswerFlag } = this.props;
 
     return (
       <div>
@@ -65,6 +83,13 @@ class MainContainer extends Component {
             <i className="fas fa-plus"></i> Add New Card
           </button>
         </h1>
+
+        <CardDisplay
+          data={cardsData[0]}
+          showAnswerFlag={showAnswerFlag}
+          // eslint-disable-next-line react/destructuring-assignment
+          showAnswer={this.props.showAnswer}
+        />
 
         <div className="navigation">
           <button id="prev" className="nav-button">
@@ -105,4 +130,4 @@ class MainContainer extends Component {
   }
 }
 
-export default connect(mapStateToProps, null)(MainContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);

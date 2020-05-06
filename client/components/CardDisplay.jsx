@@ -1,33 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export class CardDisplay extends Component {
-  render() {
-    return (
-      <div id="cards-container" className="cards">
-        <div className="card active">
-          <div className="inner-card">
-            <div className="inner-card-front">
-              <p>What is PHP?</p>
-            </div>
-            <div className="inner-card-back">
-              <p>A programming language</p>
-            </div>
+const CardDisplay = ({ data, showAnswerFlag, showAnswer }) => {
+  console.log('data = ', data);
+  // show-answer will flip the card.
+  const setClassName = showAnswerFlag
+    ? 'card active show-answer'
+    : 'card active';
+  return (
+    <div id="cards-container" className="cards">
+      <div className={setClassName} role="button" onClick={() => showAnswer()}>
+        <div className="inner-card">
+          <div className="inner-card-front">
+            <p> {data.question}</p>
           </div>
-        </div>
-
-        <div className="card">
-          <div className="inner-card">
-            <div className="inner-card-front">
-              <p>What is PHP?</p>
-            </div>
-            <div className="inner-card-back">
-              <p>A programming language</p>
-            </div>
+          <div className="inner-card-back">
+            <p> {data.answer}</p>
           </div>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default CardDisplay;

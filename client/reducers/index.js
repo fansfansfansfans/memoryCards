@@ -12,15 +12,13 @@
 import { combineReducers } from 'redux';
 
 // import all reducers here
-import marketsReducer from './marketsReducer';
-
+import memoryReducer from './memoryReducer';
 
 // combine reducers, these will be properties in state object
 const reducers = combineReducers({
   // if we had other reducers, they would go here
-  marketsReducer,
+  memoryReducer,
 });
 
 // make the combined reducers available for import
 export default reducers;
-
