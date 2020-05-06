@@ -4,6 +4,8 @@
   "description": "Flash card app for learning. Display, add and remove memory cards with questions and answers",
   "main": "index.js",
   "scripts": {
+    "format": "prettier \"src/**/*.{js,jsx}\" --write",
+    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "start": "NODE_ENV=production node server/server.js",
     "build": "NODE_ENV=production webpack",
     "dev": "NODE_ENV=development  node server/server.js & webpack-dev-server --open"
