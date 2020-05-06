@@ -45,5 +45,4 @@ class MainContainer extends Component {
 
 }
 
-// export default connect(mapStateToProps, null)(MainContainer);
-export default MainContainer;
+export default connect(mapStateToProps, null)(MainContainer);
