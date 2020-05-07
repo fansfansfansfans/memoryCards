@@ -43,7 +43,9 @@ const initCards = [
   },
   {
     question: 'What is a variable?',
-    answer: 'Container for a piece of data',
+    answer: `Persistent: persist for longer than the browsing session.
+    Secure: transferred over HTTPS. Prevents against person in the middle attacks.
+    HttpOnly: Can only be transferred via HTTP and HTTPs, cannot be accessed by JS. Prevents against XSS attacks.`,
     showAnswerFlag: false,
     divStyle: generateRandomImage(),
   },
@@ -55,7 +57,9 @@ const initCards = [
   },
   {
     question: 'What must a variable begin with?',
-    answer: 'A letter, $ or _',
+    answer: `Persistent: persist for longer than the browsing session.
+    Secure: transferred over HTTPS. Prevents against person in the middle attacks.
+    HttpOnly: Can only be transferred via HTTP and HTTPs, cannot be accessed by JS. Prevents against XSS attacks.`,
     showAnswerFlag: false,
     divStyle: generateRandomImage(),
   },

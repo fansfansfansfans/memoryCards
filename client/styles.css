@@ -69,6 +69,8 @@ h1 {
 .inner-card-back {
   font-family: 'Gloria Hallelujah', cursive;
   transform: rotateX(180deg);
+  line-height: 30px;
+  text-align: center;
 }
 
 .inner-card-front::after,
@@ -91,7 +93,7 @@ h1 {
   top: 100px;
   left: 0;
   margin: 0px;
-  height: 300px;
+  height: 340px;
   width: 500px;
   transform: translateX(0) rotateY(0deg);
   /* transform: translateX(50%) rotateY(-10deg); */
@@ -105,7 +107,7 @@ h1 {
   /* position: relative; */
   align-content: space-between;
   justify-content: space-evenly;
-  height: 650px;
+  height: 730px;
   width: 1700px;
   max-width: 100%;
   flex-wrap: wrap;
