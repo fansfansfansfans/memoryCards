@@ -12,7 +12,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CardDisplay from '../components/CardDisplay.jsx';
-import showAnswer from '../actions/actions';
+import showAnswer, { populateCards } from '../actions/actions';
 
 const mapStateToProps = state => {
   // add pertinent state here
@@ -28,10 +28,24 @@ function mapDispatchToProps(dispatch) {
   return {
     // create functions that will dispatch action creators
     showAnswer: cardKey => dispatch(showAnswer(cardKey)),
+    populateCards: cards => dispatch(populateCards(cards)),
   };
 }
 
 class MainContainer extends Component {
+  componentDidMount() {
+    fetch('/api?category=security')
+      .then(res => res.json())
+      .then(cards => {
+        console.log('MainContainer.componentDidMount: cards -', cards);
+        // eslint-disable-next-line react/destructuring-assignment
+        return this.props.populateCards(cards);
+      })
+      .catch(err =>
+        console.log('MainContainer.componentDidMount: get cards: ERROR: ', err)
+      );
+  }
+
   render() {
     const { cards } = this.props;
 

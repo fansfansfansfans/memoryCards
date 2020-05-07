@@ -9,7 +9,7 @@
  * ************************************
  */
 
-import SHOW_ANSWER from '../constants/actionTypes';
+import SHOW_ANSWER, { POPULATE_CARDS } from '../constants/actionTypes';
 
 const generateRandomImage = () => {
   const imgUrlArray = [
@@ -92,12 +92,22 @@ const memoryReducer = (state = initialState, action) => {
       // reassign states location as the user input
       const { cardKey } = action.payload;
       const index = Number.parseInt(cardKey.replace('card', ''), 10);
-      console.log('index =', index);
-      const cards = state.cards.slice();
+      const cards = [...state.cards];
       const { showAnswerFlag } = cards[index];
-      console.log('cards =', cards, 'showAnswerFlag =', showAnswerFlag);
       cards[index].showAnswerFlag = !showAnswerFlag;
-      console.log('cards =', cards, 'showAnswerFlag =', showAnswerFlag);
+      return {
+        ...state,
+        cards,
+      };
+    }
+
+    case POPULATE_CARDS: {
+      const newCards = action.payload;
+      const cards = newCards.map(currVal => {
+        currVal.showAnswerFlag = false;
+        currVal.divStyle = generateRandomImage();
+        return currVal;
+      });
       return {
         ...state,
         cards,

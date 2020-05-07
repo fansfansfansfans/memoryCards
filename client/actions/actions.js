@@ -10,7 +10,7 @@
  */
 
 // import actionType constants
-import SHOW_ANSWER from '../constants/actionTypes';
+import SHOW_ANSWER, { POPULATE_CARDS } from '../constants/actionTypes';
 
 const showAnswer = cardKey => {
   console.log('actionCreator: showAnswer');
@@ -21,6 +21,15 @@ const showAnswer = cardKey => {
   };
 };
 
+const populateCards = cards => {
+  console.log('actionCreator: populateCards payload', cards);
+
+  return {
+    type: POPULATE_CARDS,
+    payload: cards,
+  };
+};
+
 // add more action creators
 
-export { showAnswer as default };
+export { showAnswer as default, populateCards };
