@@ -14,13 +14,13 @@ const AddCards = () => {
     fetch('/api', {
       method: 'POST',
       // mode: 'no-cors',
-      // cache: 'no-cache',
-      // credentials: 'same-origin',
-      // headers: {
-      //   'Content-Type': 'application/json',
-      // },
-      // redirect: 'follow',
-      // referrerPolicy: 'no-referrer',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      headers: {
+        'content-type': 'application/json',
+      },
+      redirect: 'follow',
+      referrerPolicy: 'no-referrer',
       body: JSON.stringify(queryData),
     })
       .then(response => response.json())
