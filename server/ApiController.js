@@ -13,10 +13,29 @@ ApiController.getCards = async (req, res, next) => {
       ', cards =',
       cards
     );
-    res.locals.cards = cards;
+    const filteredCards = cards.filter(currCard => {
+      if (currCard.question !== undefined) {
+        return true;
+      }
+      return false;
+    });
+    res.locals.cards = filteredCards;
     return next();
   } catch (err) {
     res.status(418).send('There was an error, pls check server logs');
+    return next(err);
+  }
+};
+
+ApiController.addQuestion = async (req, res, next) => {
+  try {
+    console.log('req.body =', req.body);
+    const quiz = await Quiz.create(req.body);
+    console.log(`quiz = ***${quiz}***,`);
+    res.locals.quiz = quiz;
+    return next();
+  } catch (err) {
+    res.status(418).send('There was an error, pls check server logs =', err);
     return next(err);
   }
 };

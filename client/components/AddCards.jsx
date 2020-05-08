@@ -1,6 +1,32 @@
 import React from 'react';
 
 const AddCards = () => {
+  function addCard() {
+    console.log('hellllloooo card will be added !!!');
+    const category = document.querySelector('#categoryInput').value;
+    const answer = document.querySelector('#answer').value;
+    const question = document.querySelector('#question').value;
+    console.log(
+      `http:/localhost:8080/api?question=${question}&answer=${answer}&category=${category}`
+    );
+    const queryData = { question, answer, category, level: 1 };
+    console.log('post data =', queryData);
+    fetch('/api', {
+      method: 'POST',
+      // mode: 'no-cors',
+      // cache: 'no-cache',
+      // credentials: 'same-origin',
+      // headers: {
+      //   'Content-Type': 'application/json',
+      // },
+      // redirect: 'follow',
+      // referrerPolicy: 'no-referrer',
+      body: JSON.stringify(queryData),
+    })
+      .then(response => response.json())
+      .then(data => console.log('response from server =', data));
+  }
+
   return (
     <div className="addCardContainer">
       <div className="addCardPanel">
@@ -37,11 +63,10 @@ const AddCards = () => {
               <option value="buildTools">Build Tools</option>
             </select>
           </div>
-
-          <button id="add-card-button" className="btn">
-            Add Card
-          </button>
         </form>
+        <button id="add-card-button" className="btn" onClick={() => addCard()}>
+          Add Card
+        </button>
       </div>
     </div>
   );

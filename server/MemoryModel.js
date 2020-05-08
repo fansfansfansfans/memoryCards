@@ -31,7 +31,6 @@ const quizSchema = new Schema({
 const Quiz = mongoose.model('quiz', quizSchema);
 // You must export your model through module.exports
 // The collection name should be 'memory'
-console.log('Quiz zzzz =', Quiz);
 
 const personSchema = new Schema({
   name: { type: String, required: true },

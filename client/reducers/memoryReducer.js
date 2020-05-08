@@ -103,7 +103,8 @@ const memoryReducer = (state = initialState, action) => {
 
     case POPULATE_CARDS: {
       const newCards = action.payload;
-      const cards = newCards.map(currVal => {
+      const newCards1 = newCards.slice(0, 6);
+      const cards = newCards1.map(currVal => {
         currVal.showAnswerFlag = false;
         currVal.divStyle = generateRandomImage();
         return currVal;

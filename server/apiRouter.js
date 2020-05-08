@@ -10,4 +10,8 @@ apiRouter.get('/', ApiController.getCards, (req, res, next) => {
   next();
 });
 
+apiRouter.post('/', ApiController.addQuestion, (req, res, next) => {
+  res.status(200).json(res.locals.quiz);
+  next();
+});
 module.exports = apiRouter;
